@@ -1,0 +1,75 @@
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// HIND for H1,2,3
+@import url('https://fonts.googleapis.com/css?family=Hind:300,400,600,700&display=swap');
+
+// OPEN SANS for P and H4
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600i&display=swap');
+
+// angular mat
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+$title: 'Hind';
+$text: 'Open Sans';
+
+h1 {
+    font-size: 60px;
+    font-family: $title, 'Sans Serif' !important;
+    font-weight: 600 !important;
+    @media screen and ( min-width: 576px) and (max-width: 768px) {
+        font-size: 40px
+    }
+    @media screen and ( max-width: 576px ) {
+        font-size: 40px
+    }
+}
+
+h2 {
+    font-size: 44px;
+    font-family: $title, 'Sans Serif' !important;
+    font-weight: 600 !important;
+    @media screen and ( max-width: 576px ) {
+        font-size: 40px !important;
+    }
+}
+
+h3 {
+    font-size: 26px;
+    font-family: $text, 'Sans Serif' !important;
+    font-weight: 400 !important;
+    line-height: 2.5rem !important;
+    @media screen and ( max-width: 576px ) {
+        font-size: 21px !important;
+        line-height: 2rem !important;
+    }
+}
+
+body {
+    overflow-x: hidden;
+    font-family: $text !important;
+    height: 100vh;
+    width: 100%;
+    background: white;
+}
+
+p {
+    font-family: $text;
+}
+
+.popup-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #97979761;
+    .popup-holder {
+        background-color: white;
+        padding: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 15px;
+    }
+}

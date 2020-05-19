@@ -1,0 +1,40 @@
+<!-- login container -->
+<div class="containerMain">
+
+    <div class="loginPart">
+
+        <!-- title and subtitle -->
+        <h2 class="title">Register</h2>
+        <h3 class="subtitle">Join our app to manage your leads!</h3>
+        
+        <form>
+
+            <!-- email -->
+            <mat-form-field class="emailInput">
+                <mat-label>
+                    Email Address
+                </mat-label>
+                <input matInput [formControl]="email" autocomplete="username" type="text" required>
+                <mat-error>{{getErrors(email)}}</mat-error>
+            </mat-form-field>
+
+            <!-- password -->
+            <mat-form-field class="emailInput">
+                <mat-label>
+                    Password
+                </mat-label>
+                <input matInput [formControl]="pass" autocomplete="current-password" type="password" minlength="8" required>
+                <mat-error>{{getErrors(pass)}}</mat-error>
+            </mat-form-field>
+            
+            <button mat-flat-button color="primary" type="submit" class="mainFormButtons" (click)="register()">Register</button>
+        
+        </form>
+    </div>
+
+    <div class="change">
+        <h3>Have an account?</h3>
+        <button mat-stroked-button (click)="triggerChange()">Login</button>
+    </div>
+
+</div>

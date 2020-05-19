@@ -1,0 +1,39 @@
+<div class="popup-container">
+    <div class="popup-holder">
+        <div class="title">
+            <h3>
+                Card details
+            </h3>
+            <h4>Modify details</h4>
+            <div class="control">
+
+                <!-- title -->
+                <mat-form-field>
+                    <mat-label>Title</mat-label>
+                    <input type="text" matInput required [formControl]="title">
+                    <mat-error *ngIf="title.invalid">{{getErrors(title)}}</mat-error>
+                </mat-form-field>
+
+                <!-- notes -->
+                <mat-form-field>
+                    <mat-label>Notes</mat-label>
+                    <textarea matInput [formControl]="notes"></textarea>
+                </mat-form-field>
+
+                <!-- amount -->
+                <mat-form-field>
+                    <mat-label>Value</mat-label>
+                    <input type="number" matInput [formControl]="value">
+                    <span matSuffix>{{currency}}</span>
+                </mat-form-field>
+
+                <!-- delete button -->
+                <button mat-flat-button class="delete" (click)="delete()" color="warn">Delete</button>
+            </div>
+            <div class="actions">
+                <button mat-flat-button (click)="createCard(true)" color="primary">Create</button>
+                <button mat-flat-button (click)="createCard(false)" color="warn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+@import './../../../styles.scss';
+
+.loginContainer {
+    border: none;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+    width: 100%;
+    margin-top: 0px;
+    border-radius: 23px;
+    @media screen and ( min-width:  768px) {
+        margin-top: 20%
+    }
+    @media screen and ( max-width:  576px) {
+        border-radius: 0px
+    }
+}
+
+.emailInput {
+    font-family: $text, sans-serif;
+    font-size: 20px;
+    padding: 5px 10px;
+    width: 90%;
+}
+
+.containerMain {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    width: 500px;
+}
+
+.loginPart {
+    background: white;
+    box-shadow: 1px 1px 4px 0px #72727299;
+    border-radius: 20px;
+    padding: 40px 40px 0px;
+    overflow: hidden;
+}
+
+.mainFormButtons {
+    position: relative;
+    bottom: 0;
+    left: 50%;
+    width: 200%;
+    transform: translate(-50%, 0px);
+    border-radius: 0px 0px 20px 20px;
+    padding: 9px;
+    outline: none;
+}
+
+.title {
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+.subtitle {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.emailInput {
+    font-size: 17px;
+}
+
+.change {
+    text-align: center;
+    padding-top: 30px;
+    h3 {
+        font-size: 20px;
+    }
+    button {
+        outline: none;
+        border-radius: 10px;
+    }
+}
+
+.actionsLink {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    text-align: center;
+    color: grey;
+    div {
+        display: inline-block;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}

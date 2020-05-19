@@ -1,0 +1,14 @@
+.mat-form-field {
+    width: 90%;
+}
+
+.actions {
+    text-align: center;
+    padding-top: 30px;
+    button {
+        width: 200px;
+        &:first-child {
+            margin-right: 20px;
+        }
+    }
+}

@@ -1,0 +1,91 @@
+<div class="pipeline-container">
+    <div 
+    class="pipeline-sub-container"
+    [ngStyle]="{'height': containerHeight + 'px'}" 
+    *ngIf="userDocument && userDocument.columns"
+    cdkDropList
+    cdkDropListOrientation="horizontal"
+    (cdkDropListDropped)="drop($event)">
+        <div class="pipeline-column" 
+        [ngStyle]="{'height': containerHeight - 40 + 'px'}" 
+        *ngFor="let column of userDocument.columns; let i = index" 
+        cdkDrag>
+            <div class="pipeline-content-container">
+
+                <!-- title -->
+                <div class="title" (click)="triggerPopUp(i, 'name')">
+                    <button mat-icon-button (click)="deleteElement(i)">
+                    <mat-icon>clear</mat-icon>
+                    </button>
+                    {{column.name}}
+                    <div class="amount">
+                        {{getNumberCard(column) | number:'1.0-0'}} cards <br>
+                        {{getAmount(column) | number:'1.0-0'}} {{userDocument.currency}}
+                    </div>
+                </div>
+
+                <!-- add card -->
+                <div class="actions">
+                    <button mat-button (click)="newCard(i)">Add a new card</button>
+                </div>
+
+                <!-- cards -->
+                <div
+                class="cards"
+                cdkDropList
+                [cdkDropListData]="column.cards"
+                (cdkDropListDropped)="dropCard($event)"
+                [cdkDropListConnectedTo]="connectedTo"
+                id="{{'card-list-' + i}}">
+                    <div
+                    (click)="triggerCardModifyer(i, cardId, card)"
+                    class="card" 
+                    *ngFor="let card of column.cards; let cardId = index"
+                    cdkDrag>
+                        <div class="card-content">{{card.title}}</div>
+                        <div class="card-amount" *ngIf="card.value !== ''">{{card.value}} {{userDocument.currency}}</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- triggers a new column to be added -->
+        <div class="pipeline-new-column">
+            <button mat-fab color="primary" class="addButton" (click)="addColumn()">Add</button>
+        </div>
+    </div>
+</div>
+
+<!-- Popup used to change the name of a column -->
+<div class="popup-container" *ngIf="changeName">
+    <div class="popup-holder">
+        <div class="title">
+            <h3>
+                Change the selected value
+            </h3>
+            <div class="control">
+                <mat-form-field *ngIf="changeName">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput [formControl]="name" required>
+                </mat-form-field>
+            </div>
+            <div class="actions">
+                <button mat-flat-button color="accent" (click)="confirmChange()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- popup used to add a new card -->
+<app-new-card-popup
+[id]="id"
+(cardAdded)="addCard($event)"
+*ngIf="triggerAddCard"></app-new-card-popup>
+
+<!-- popup used to modify a card -->
+<app-modify-card
+[card]="selectedCard"
+[currency]="userDocument.currency"
+(confirmChanges)="updateCard($event)"
+*ngIf="selectedCard.card"></app-modify-card>
